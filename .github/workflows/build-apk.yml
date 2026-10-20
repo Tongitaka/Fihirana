@@ -1,0 +1,74 @@
+# Manamboatra APK Android (debug)
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  apk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Accept licenses
+        run: yes | sdkmanager --licenses || true
+
+      - name: Install npm packages
+        run: |
+          set -eux
+          node -v
+          npm -v
+          # Tsy mampiasa postinstall — sync-www manokana any aoriana
+          npm install --no-fund --no-audit --ignore-scripts
+          ls node_modules/@capacitor/cli/bin || ls node_modules/@capacitor/
+          npx cap --version
+
+      - name: Build web (www/)
+        run: node scripts/sync-www.js
+
+      - name: Add Android platform
+        run: |
+          set -eux
+          if [ ! -d android ]; then
+            npx cap add android
+          fi
+          test -f android/gradlew
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Apply icons & splash
+        run: node scripts/apply-android-branding.js || true
+
+      - name: Build debug APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: HIRA-plus-debug
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30
