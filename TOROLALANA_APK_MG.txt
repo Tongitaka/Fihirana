@@ -1,0 +1,29 @@
+HIRA+ v4.7 — TOROLALANA APK (GitHub)
+====================================
+
+1. EXTRACT ny ZIP, midira ao amin'ny dossier hira-plus-github
+2. git init && git add . && git commit -m "HIRA+ v4.7"
+3. Mamorona repo vaovao ao GitHub (ohatra: hira-plus)
+4. git remote add origin https://github.com/USERNAME/hira-plus.git
+5. git push -u origin main
+
+GITHUB PAGES
+------------
+Settings → Pages → Source = GitHub Actions
+Actions → Deploy GitHub Pages → Run workflow
+
+APK
+---
+Actions → Build Android APK → Run workflow
+Artifacts → HIRA-plus-debug → download .apk
+Apetraho amin'ny finday (Install unknown apps)
+
+Raha tsy mandeha ny workflow:
+- Hamarino fa public ny repo NA efa misy Actions minutes
+- Jereo ny log amin'ny "Build debug APK"
+
+FANAVAOZANA HIRA
+----------------
+Ovay hira-data.js → CACHE_NAME ao sw.js → git push → Build APK indray
+
+App ID: mg.jesosymamonjy.hiraplus
