@@ -382,7 +382,6 @@ body.mode-bible .main{padding-bottom:calc(var(--nav-h) + 28px + env(safe-area-in
     <div class="card"><h4><i data-ic="download"></i> Tahirin'ny hira tiako</h4><p>Tehirizo ny hira tiako.</p>
       <div class="row"><button class="btn" onclick="exportData()"><i data-ic="download"></i> Misintona</button><button class="btn sec" onclick="$('importFile').click()"><i data-ic="upload"></i> Mampiditra</button></div>
       <input type="file" id="importFile" accept=".json,application/json" class="hidden"></div>
-    <div class="card"><h4><i data-ic="phone"></i> Apetraka amin'ny fitaovana</h4><p>Ataovy toy ny app mahazatra, miasa tsy mila Internet.</p><button class="btn sec" id="installBtn" onclick="installApp()">Hametraka ny app</button></div>
     <div class="card"><h4><i data-ic="refresh"></i> Fanavaozana</h4><p>Jereo raha misy kinova vaovao ny boky fihirana.</p><button class="btn sec" onclick="refreshApp()">Jereo ny fanavaozana</button></div>
   </section>
 
@@ -490,7 +489,7 @@ body.mode-bible .main{padding-bottom:calc(var(--nav-h) + 28px + env(safe-area-in
       <button type="button" class="dr-link" id="drThemes"><i data-ic="tag"></i><span>Fizahan-dohateny</span></button>
     </div>
     <div class="acc open"><button class="acc-h"><span class="acc-ico"><i data-ic="hash"></i></span><span class="acc-t"><b>123</b><span>Sivana laharana na taona</span></span><i data-ic="down" class="chev"></i></button><div class="acc-b" id="accNum"></div></div>
-    <div class="acc"><button class="acc-h"><span class="acc-ico"><i data-ic="type"></i></span><span class="acc-t"><b>ABC</b><span>Sivana ara-pirenena abidy</span></span><i data-ic="down" class="chev"></i></button><div class="acc-b" id="accAbc"></div></div>
+    <div class="acc"><button class="acc-h"><span class="acc-ico"><i data-ic="type"></i></span><span class="acc-t"><b>ABC</b><span>Sivana arakany abidy</span></span><i data-ic="down" class="chev"></i></button><div class="acc-b" id="accAbc"></div></div>
     <div class="acc"><button class="acc-h"><span class="acc-ico"><i data-ic="grid"></i></span><span class="acc-t"><b>Sokajy</b><span>Sivana lohahevitra sy karazany</span></span><i data-ic="down" class="chev"></i></button><div class="acc-b" id="accCat"></div></div>
     <div class="dr-verse" id="drVerse"><em>"Izao no didiko, dia ny mba hifankatiavanareo"</em><b>JAONA 15:12</b></div>
     <div class="dr-copy">Baiboly sy fihirana Jesosy Mamonjy Brieville<br>©️ Volasoa Mbola</div>
@@ -700,7 +699,7 @@ function applyFontType(){
 document.querySelectorAll('#fontSeg button').forEach(b=>b.onclick=()=>{store.set(FONTTYPEKEY,b.dataset.font);applyFontType()});
 
 /* ---------- Navigation ---------- */
-const TITLES={home:'Baiboly sy fihirana Jesosy Mamonjy',favorites:'Hira tiako',data:'Data',option:'Option',reader:''};
+const TITLES={home:'Fihirana',favorites:'Hira tiako',data:'Data',option:'Option',reader:''};
 function go(v,{scroll=true}={}){
   if(!(v in TITLES))v='home';
   if(v!=='reader'){lastView=v;releaseWake();document.body.classList.remove('fs');if(document.fullscreenElement)document.exitFullscreen?.()}
