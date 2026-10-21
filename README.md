@@ -31,7 +31,7 @@ hira-plus-github/
 cd hira-plus-github
 git init
 git add .
-git commit -m "HIRA+ v4.7 — vonona APK"
+git commit -m "Baiboly & Fihirana JM Brieville v4.7 — vonona APK"
 git branch -M main
 git remote add origin https://github.com/USERNAME/hira-plus.git
 git push -u origin main
