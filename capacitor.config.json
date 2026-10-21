@@ -1,0 +1,8 @@
+{
+  "appId": "com.jesosymamonjy.app",
+  "appName": "Baiboly sy fihirana Jesosy Mamonjy",
+  "webDir": "www",
+  "backgroundColor": "#050816",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false }
+}
